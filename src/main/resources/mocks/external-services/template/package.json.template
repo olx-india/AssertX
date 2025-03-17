@@ -1,0 +1,12 @@
+{
+  "name": "mock-app",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "4.16.0",
+    "body-parser-graphql": "^1.1.0"
+
+    ${DEPENDENCY_DEFINITIONS}
+  }
+}

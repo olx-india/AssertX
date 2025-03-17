@@ -1,0 +1,66 @@
+availableFrameworks:
+  - SPRING
+  - DROPWIZARD
+
+availableMocks:
+  - EXTERNAL_SERVICES
+  - REDIS
+  - MYSQL
+  - LOCALSTACK
+  - SOLR
+  - ZOOKEEPER
+  - KAFKA
+  - POSTGRESQL
+  - OPENSEARCH
+
+profileConfig:
+  LOCAL:
+    dockerHost: 0.0.0.0
+  GITLAB:
+    dockerHost: docker
+
+globalMocks:
+  routes:
+    - type: threepio
+      resourcePath: mocks/global
+      folderName: threepio-service
+      fileNames:
+        - olxin.json
+        - threepio.js
+      endpoints:
+        - methodType: GET
+          path: /threepio/v1/projects/:projectId/files
+          method: getTranslationFileV1
+
+serviceDefaults:
+  externalServices:
+    port: 31270
+  redis:
+    port: 6379
+    image: redis:latest
+  toxiproxy:
+    port: 8474
+  mysql:
+    port: 3306
+    image: mysql:latest
+  localstack:
+    image: localstack/localstack
+    port: 4566
+    services:
+      - s3
+    region: us-east-1
+  solr:
+    image: solr:latest
+    port: 8983
+  zookeeper:
+    image: wurstmeister/zookeeper
+    port: 2181
+  kafka:
+    image: wurstmeister/kafka
+    port: 9093
+  postgresql:
+    port: 5432
+    image: postgres:latest
+  opensearch:
+    port: 9200
+    image: opensearchproject/opensearch:2.2.0

@@ -1,0 +1,2 @@
+M2_HOME="/usr/share/java/maven-3"
+MAVEN_OPTS="-Xmx512m ${MAVEN_OPTS}"
