@@ -23,14 +23,15 @@
     </licenses>
 
     <properties>
-        <maven.version>3.6.1</maven.version>
-        <maven.compiler.source>1.17</maven.compiler.source>
-        <maven.compiler.target>1.17</maven.compiler.target>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <jedis.version>2.9.0</jedis.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
 
         <!-- Test Dependency Versions -->
+        <jedis.version>2.9.0</jedis.version>
         <extent.version>1.0.6</extent.version>
         <cucumber.version>6.10.3</cucumber.version>
         <junitJupiter.version>5.6.0</junitJupiter.version>
@@ -41,8 +42,6 @@
         <lombok.version>1.18.22</lombok.version>
         <asm.version>7.3.1</asm.version>
         <log4j.version>2.17.1</log4j.version>
-        <maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
-        <maven.release.plugin.version>2.5.3</maven.release.plugin.version>
     </properties>
 
     <dependencies>
