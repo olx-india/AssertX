@@ -1,6 +1,6 @@
 package com.olx.assertx.utils;
 
-import org.springframework.util.SocketUtils;
+import org.springframework.cloud.test.TestSocketUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,7 +17,7 @@ public class PortManager {
 
     public int getServicePort(String serviceName) {
         if (!servicePortMap.containsKey(serviceName)) {
-            int port = SocketUtils.findAvailableTcpPort();
+            int port = TestSocketUtils.findAvailableTcpPort();
             servicePortMap.put(serviceName, port);
         }
         return servicePortMap.get(serviceName);
