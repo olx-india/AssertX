@@ -669,5 +669,4 @@ Execution -  Follow the steps listed below to accomplish the objective.
                - methodType: POST
                  path: /payment/soapcallbackapi
                  method: paymentCallbackOutput
-   ```         
-## FAQ  
+   ```
