@@ -16,7 +16,7 @@ availableMocks:
 profileConfig:
   LOCAL:
     dockerHost: 0.0.0.0
-  GITLAB:
+  CI:
     dockerHost: docker
 
 globalMocks:
