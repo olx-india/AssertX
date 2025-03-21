@@ -273,6 +273,6 @@
         <connection>scm:git:git://github.com/olx-india/AssertX.git</connection>
         <developerConnection>scm:git:ssh://github.com:olx-india/AssertX.git</developerConnection>
         <url>https://github.com/olx-india/AssertX.git</url>
-        <tag>0.0.1</tag>
+        <tag>0.0.2</tag>
     </scm>
 </project>
