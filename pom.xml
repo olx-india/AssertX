@@ -5,7 +5,7 @@
 
     <groupId>in.olx</groupId>
     <artifactId>assertx</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <!-- Add according to the new github project -->
@@ -273,6 +273,6 @@
         <connection>scm:git:git://github.com/olx-india/AssertX.git</connection>
         <developerConnection>scm:git:ssh://github.com:olx-india/AssertX.git</developerConnection>
         <url>https://github.com/olx-india/AssertX.git</url>
-        <tag>0.0.2</tag>
+        <tag>0.0.3</tag>
     </scm>
 </project>
