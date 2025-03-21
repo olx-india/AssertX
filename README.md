@@ -17,25 +17,15 @@ AssertX is an API testing framework built using Cucumber and Java. It is designe
 ## List of Contents
 
 1. [Integration Steps](#integration-steps)
-   <br></br>
     - [Configuration](#configuration)
-    <br></br>
     - [Execution](#execution)
-    <br></br>
     - [Reporting](#reporting)
-    <br></br>
 2. [Health Check](#health-check)
-<br> </br>
     - [How to check service or mock ports](#how-to-check-service-or-mock-ports)
-<br> </br>
 3. [How to write Custom Mocks?](#how-to-write-custom-mocks)
-<br> </br>
 4. [How to add Parallelization](#how-to-add-parallelisation-works-with-failsafe-222x)
-<br> </br>
 5. [Gradle Integration](#gradle-integration-with-kotlin-requires-gradle--510-)
-<br> </br>
 6. [SOAP API Consumer & Downstream XML Response Support](#soap-api-consumer-and-downstream-xml-response-support)
-<br> </br>
 7. [FAQ](#faq)
 
 ## Integration Steps
@@ -57,7 +47,7 @@ AssertX is an API testing framework built using Cucumber and Java. It is designe
 
     ```xml
     <dependency>
-        <groupId>com.olx.assertx</groupId>
+        <groupId>in.olx</groupId>
         <artifactId>assertx</artifactId>
         <!-- Set the assertx version below -->
         <version>${assertx.version}</version>
@@ -331,11 +321,14 @@ AssertX is an API testing framework built using Cucumber and Java. It is designe
     ./mvnw clean integration-test -DskipUnitTests=true
     ```
 
-2. **Pipeline** : Add the following configuration in `.gitlab-ci.yml`.
-    
-    ```yaml
+2. **Pipeline** : Add the following configuration in `.gitlab-ci.yml` or any map it to any other CI Script.
+
+   - Use official public AssertX docker image : https://hub.docker.com/r/olxindia/assertx
+   - ``docker pull olxindia/assertx``
+
+```yaml
     ${IT_STEP_NAME}:
-        image: eclipse-temurin/17-jdk-alpine
+        image: olxindia/assertx
         variables:
             DOCKER_DRIVER: overlay2
         services:
