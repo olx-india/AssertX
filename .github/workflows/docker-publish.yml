@@ -11,6 +11,7 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: DOCKER
     permissions:
       contents: read
       packages: write
