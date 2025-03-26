@@ -1,9 +1,12 @@
 name: Publish package to Docker Hub
 
 on:
-  workflow_dispatch:
-  release:
-    types: [created]
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
 
 jobs:
   publish:
