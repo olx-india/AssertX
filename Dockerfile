@@ -6,7 +6,6 @@ RUN apk add --no-cache \
         maven \
         openjdk17 \
         git \
-        docker-compose \ 
         ca-certificates \
         wget \
         python3 \
@@ -15,6 +14,12 @@ RUN apk add --no-cache \
     && pip3 install --no-cache-dir \
         awscli \
     && rm -rf /var/cache/apk/*
+
+RUN mkdir -p /usr/local/lib/docker/cli-plugins \
+ && wget -q https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 \
+    -O /usr/local/lib/docker/cli-plugins/docker-compose \
+ && chmod +x /usr/local/lib/docker/cli-plugins/docker-compose \
+ && ln -sf /usr/local/lib/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
 
 # Configure JDK11
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
