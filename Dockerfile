@@ -1,4 +1,4 @@
-FROM docker:24.0.2-dind-alpine3.18
+FROM docker:25.0.0-dind-alpine3.19
 
 # Install dependencies
 RUN apk add --no-cache \
@@ -6,22 +6,24 @@ RUN apk add --no-cache \
         maven \
         openjdk17 \
         git \
+        docker-compose \
         ca-certificates \
         wget \
         python3 \
-        py3-pip \
-    && pip3 install --upgrade --no-cache-dir pip \
-    && pip3 install --no-cache-dir \
-        awscli \
-    && rm -rf /var/cache/apk/*
+        py3-pip
 
-RUN mkdir -p /usr/local/lib/docker/cli-plugins \
- && wget -q https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 \
-    -O /usr/local/lib/docker/cli-plugins/docker-compose \
- && chmod +x /usr/local/lib/docker/cli-plugins/docker-compose \
- && ln -sf /usr/local/lib/docker/cli-plugins/docker-compose /usr/local/bin/docker-compose
+RUN wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0.1-amd64-static.tar.xz \
+    && tar -xf ffmpeg-6.0.1-amd64-static.tar.xz \
+    && mv ffmpeg-6.0.1-amd64-static/ffmpeg /usr/local/bin/ \
+    && mv ffmpeg-6.0.1-amd64-static/ffprobe /usr/local/bin/ \
+    && chmod +x /usr/local/bin/ffmpeg /usr/local/bin/ffprobe \
+    && rm -rf ffmpeg-6.0.1-amd64-static*
 
-# Configure JDK11
+RUN pip3 install --upgrade --no-cache-dir pip --break-system-packages \
+ && pip3 install --no-cache-dir awscli --break-system-packages \
+ && rm -rf /var/cache/apk/* \
+
+# Configure JDK17
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 ENV PATH="$JAVA_HOME/bin:${PATH}"
 
