@@ -1,5 +1,11 @@
 # AssertX
 
+[![CI](https://github.com/olx-india/AssertX/actions/workflows/package-verify.yml/badge.svg)](https://github.com/olx-india/AssertX/actions/workflows/package-verify.yml)
+[![Java Version](https://img.shields.io/badge/java-17-blue.svg)](https://docs.oracle.com/en/java/javase/17/)
+[![Cucumber](https://img.shields.io/badge/cucumber-6.10.3-green.svg)](https://cucumber.io/)
+[![RestAssured](https://img.shields.io/badge/rest--assured-4.2.0-orange.svg)](https://rest-assured.io/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+
 ![](logo.jpeg)
 
 AssertX is an API testing framework built using Cucumber and Java. It is designed to help teams automate API tests efficiently using a behavior-driven development (BDD) approach.
@@ -14,19 +20,44 @@ AssertX is an API testing framework built using Cucumber and Java. It is designe
 
 🔹 **Seamless Integration** – Can be plugged into CI/CD workflows.
 
+## Tech Stack
+
+| Category   | Technology                                      |
+|------------|-------------------------------------------------|
+| Language   | Java 17                                         |
+| BDD        | Cucumber 6.10.3                                 |
+| HTTP       | RestAssured 4.2.0                               |
+| Build      | Maven                                           |
+| Containers | Docker Compose (Palantir docker-compose-rule)   |
+| Mocks      | Redis, MySQL, PostgreSQL, Kafka, LocalStack, Solr, OpenSearch, Toxiproxy, Express external services |
+| License    | Apache License 2.0                              |
+
+## AI prompts
+
+Use the ready-to-paste prompts under [`prompts/`](prompts/) with Cursor, Claude Code, or similar agents:
+
+| Prompt | Purpose |
+|--------|---------|
+| [Integrate AssertX](prompts/integrate-assertx.md) | Wire AssertX into a Maven/Gradle service (`ITMain`, `api-testing.yml`, mocks) |
+| [Write AssertX tests](prompts/write-assertx-tests.md) | Author Cucumber features, custom steps, and downstream mocks |
+
+See [prompts/README.md](prompts/README.md) for usage tips.
+
 ## List of Contents
 
-1. [Integration Steps](#integration-steps)
+1. [Tech Stack](#tech-stack)
+2. [AI prompts](#ai-prompts)
+3. [Integration Steps](#integration-steps)
     - [Configuration](#configuration)
     - [Execution](#execution)
     - [Reporting](#reporting)
-2. [Health Check](#health-check)
+4. [Health Check](#health-check)
     - [How to check service or mock ports](#how-to-check-service-or-mock-ports)
-3. [How to write Custom Mocks?](#how-to-write-custom-mocks)
-4. [How to add Parallelization](#how-to-add-parallelisation-works-with-failsafe-222x)
-5. [Gradle Integration](#gradle-integration-with-kotlin-requires-gradle--510-)
-6. [SOAP API Consumer & Downstream XML Response Support](#soap-api-consumer-and-downstream-xml-response-support)
-7. [FAQ](#faq)
+5. [How to write Custom Mocks?](#how-to-write-custom-mocks)
+6. [How to add Parallelization](#how-to-add-parallelisation-works-with-failsafe-222x)
+7. [Gradle Integration](#gradle-integration-with-kotlin-requires-gradle--510-)
+8. [SOAP API Consumer & Downstream XML Response Support](#soap-api-consumer-and-downstream-xml-response-support)
+9. [FAQ](#faq)
 
 ## Integration Steps
 
