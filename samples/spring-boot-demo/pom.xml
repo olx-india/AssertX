@@ -19,7 +19,7 @@
     <properties>
         <java.version>17</java.version>
         <!-- Latest AssertX on Maven Central: https://central.sonatype.com/artifact/in.olx/assertx -->
-        <assertx.version>0.0.3</assertx.version>
+        <assertx.version>0.0.5</assertx.version>
     </properties>
 
     <dependencies>

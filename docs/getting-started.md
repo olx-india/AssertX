@@ -13,7 +13,7 @@
        <jacoco.it.bundle.percentage.instruction>0.50</jacoco.it.bundle.percentage.instruction>
        <jacoco.version>0.8.2</jacoco.version>
        <skipIntegration>false</skipIntegration>
-       <assertx.version>0.0.3</assertx.version> <!-- latest on Maven Central -->
+       <assertx.version>0.0.5</assertx.version> <!-- latest on Maven Central -->
     ```
 
     - Add **AssertX** dependency -

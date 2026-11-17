@@ -19,7 +19,7 @@ Requires Gradle 5.10 or newer.
 
 2. Add the following lines in your dependencies section of build.gradle.kts
     ```
-    testImplementation("in.olx:assertx:0.0.3")
+    testImplementation("in.olx:assertx:0.0.5")
     testImplementation("com.palantir.docker.compose:docker-compose-rule-junit4:1.0.0")
     testImplementation("io.cucumber:cucumber-junit:6.10.3")
     testImplementation("io.cucumber:cucumber-java:6.10.3")

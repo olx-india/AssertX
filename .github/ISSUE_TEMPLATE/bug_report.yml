@@ -25,7 +25,7 @@ body:
     id: version
     attributes:
       label: AssertX version
-      placeholder: "0.0.3"
+      placeholder: "0.0.5"
     validations:
       required: true
   - type: input
