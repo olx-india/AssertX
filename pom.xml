@@ -10,9 +10,7 @@
 
     <!-- Add according to the new github project -->
     <name>AssertX</name>
-    <description>
-        A modern and powerful API testing framework built using Cucumber and Java. It is designed to help teams automate API tests efficiently using a behavior-driven development (BDD) approach.
-    </description>
+    <description>BDD API testing for Java services: write Cucumber scenarios, and AssertX boots your app plus Redis, Kafka, Postgres &amp; more in Docker.</description>
     <url>https://github.com/olx-india/AssertX</url>
 
     <licenses>
