@@ -17,7 +17,7 @@ Integrate AssertX (https://github.com/olx-india/AssertX) into this service for C
 
 ## Constraints
 - Docker must be available locally for ITs.
-- Glue packages must include both com.olx.assertx.stepdefinitions and any custom step-definition package.
+- Glue should list only custom step-definition packages; ITRunner already registers com.olx.assertx.stepdefinitions (adding it again causes DuplicateStepDefinitionException).
 - Exclude ITMain from Surefire; include it in Failsafe.
 - Enable only mocks the service actually uses (redis, mysql, postgresql, kafka+zookeeper, localstack, opensearch, solr, toxiproxy, externalServices).
 - Do not invent private Maven coordinates; use in.olx:assertx with the version from the AssertX README / release.
@@ -26,8 +26,8 @@ Integrate AssertX (https://github.com/olx-india/AssertX) into this service for C
 ## Built-in Cucumber steps (reuse these)
 - Given I have <host> host
 - Given I have <path> API
-- Given I have following query parameters (DataTable)
-- Given I have following headers (DataTable)
+- Given I have following query parameters (DataTable: names in row 1, values in row 2)
+- Given I have following headers (DataTable: names in row 1, values in row 2)
 - Given I have a request body in <contextKey>
 - Given I have following multipart file specifications (DataTable)
 - When Execute <GET|POST|PUT|PATCH|DELETE> request using REST

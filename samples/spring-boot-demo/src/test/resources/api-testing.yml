@@ -1,0 +1,19 @@
+mainClass: com.example.greeting.GreetingApplication
+application:
+  spring:
+    profile: integration-test
+mocks:
+  externalServices:
+    userSpecified:
+      routes:
+        - type: user                                      # loads user.js from the folder below
+          resourcePath: src/test/resources/mocks/external-services/
+          folderName: user-service
+          endpoints:
+            - methodType: GET
+              path: /api/v1/users/:userId
+              method: getUser                             # exported function in user.js
+  toxiproxy:
+    enabled: false
+  redis:
+    enabled: false

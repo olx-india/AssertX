@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="120" viewBox="0 0 480 120" role="img" aria-label="AssertX">
+  <rect x="8" y="12" width="96" height="96" rx="22" fill="#1f6feb"/>
+  <path d="M34 62 l14 14 l28 -32" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M74 74 l14 14 M88 74 l-14 14" stroke="#7ee787" stroke-width="7" stroke-linecap="round"/>
+  <text x="124" y="80" font-family="Inter, Segoe UI, Helvetica, Arial, sans-serif" font-size="56" font-weight="700" fill="#1f6feb">Assert<tspan fill="#2ea043">X</tspan></text>
+</svg>

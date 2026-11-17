@@ -1,0 +1,46 @@
+site_name: AssertX
+site_description: End-to-end API testing for Java services with Cucumber, RestAssured and Docker mocks.
+site_url: https://olx-india.github.io/AssertX/
+repo_url: https://github.com/olx-india/AssertX
+repo_name: olx-india/AssertX
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  features:
+    - content.code.copy
+    - navigation.sections
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+markdown_extensions:
+  - admonition
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+
+nav:
+  - Home: index.md
+  - Integration guide: getting-started.md
+  - Built-in steps: steps.md
+  - Mocks: mocks.md
+  - Gradle: gradle.md
+  - Advanced: advanced.md
+  - AI prompts: ai-prompts.md
+  - Comparison: comparison.md

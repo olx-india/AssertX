@@ -10,7 +10,7 @@ Write AssertX API integration tests for this service using Cucumber feature file
 ## Context
 - AssertX is already (or will be) integrated: ITMain extends com.olx.assertx.ITRunner.
 - Features live under src/test/resources (or the path configured in @CucumberOptions).
-- Glue must include com.olx.assertx.stepdefinitions plus any custom step-definition package.
+- Glue should list only custom step-definition packages; ITRunner already registers com.olx.assertx.stepdefinitions (adding it again causes DuplicateStepDefinitionException).
 - Mocks and ports are configured in src/test/resources/api-testing.yml; app clients use ${mock-name} placeholders.
 
 ## Built-in steps (prefer these)
@@ -19,10 +19,13 @@ Write AssertX API integration tests for this service using Cucumber feature file
 - Given I have <path> API
   Example: Given I have /api/v1/orders API
 - Given I have following query parameters
-  | key | value |
+  | page | size |
+  | 1    | 20   |
+  (names in the first row, values in the second row)
 - Given I have following headers
-  | Content-Type     | application/json |
-  | X-Default-Tenant | default          |
+  | Content-Type     | X-Default-Tenant |
+  | application/json | default          |
+  (names in the first row, values in the second row; key/value rows fail with "Empty headers table!")
 - Given I have a request body in <contextKey>
   (payload must already be stored in CucumberTestContext under that key via a custom Given step)
 - When Execute GET|POST|PUT|PATCH|DELETE request using REST
@@ -42,7 +45,8 @@ Feature: <capability>
     Given I have http://0.0.0.0:<appPort>/ host
     And I have /api/... API
     And I have following headers
-      | Content-Type | application/json |
+      | Content-Type     |
+      | application/json |
     When Execute GET request using REST
     Then Validate status code is: 200
 

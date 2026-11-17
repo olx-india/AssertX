@@ -1,0 +1,18 @@
+{
+  "name": "AssertX",
+  "image": "mcr.microsoft.com/devcontainers/java:1-17-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/java:1": {
+      "version": "none",
+      "installMaven": "true"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers/features/python:1": {}
+  },
+  "postCreateCommand": "pip install --user mkdocs-material && mvn -B -q -Dgpg.skip -DskipTests install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["vscjava.vscode-java-pack", "CucumberOpen.cucumber-official"]
+    }
+  }
+}
