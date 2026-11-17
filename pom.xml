@@ -192,6 +192,7 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
+                <!-- 0.4.0 crashes parsing Central's newer validation response (Unrecognized field "warnings") -->
                 <version>0.12.0</version>
                 <extensions>true</extensions>
                 <configuration>
