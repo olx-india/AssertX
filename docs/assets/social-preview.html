@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- Source for social-preview.png (1280x640). Regenerate with:
+     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new --hide-scrollbars \
+       --force-device-scale-factor=1 --window-size=1280,640 \
+       --screenshot=docs/assets/social-preview.png docs/assets/social-preview.html -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    color: #e6edf3;
+    background:
+      radial-gradient(900px 500px at 85% 20%, rgba(31,111,235,0.28), transparent 60%),
+      radial-gradient(700px 400px at 10% 100%, rgba(46,160,67,0.18), transparent 60%),
+      #0d1117;
+    display: flex;
+    align-items: center;
+    padding: 0 72px;
+    gap: 56px;
+  }
+  .left { flex: 1 1 0; min-width: 0; }
+  .brand { display: flex; align-items: center; gap: 22px; margin-bottom: 30px; }
+  .brand svg { flex: none; }
+  .name { font-size: 76px; font-weight: 800; letter-spacing: -2px; }
+  .name span { color: #3fb950; }
+  .tagline { font-size: 36px; line-height: 1.25; font-weight: 600; margin-bottom: 18px; }
+  .sub { font-size: 23px; line-height: 1.45; color: #9da7b3; margin-bottom: 30px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-size: 18px; font-weight: 600; color: #c9d1d9;
+    border: 1px solid #30363d; background: rgba(110,118,129,0.12);
+    padding: 7px 14px; border-radius: 999px;
+  }
+  .card {
+    flex: none; width: 520px;
+    background: #161b22; border: 1px solid #30363d; border-radius: 16px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    overflow: hidden;
+  }
+  .bar { display: flex; align-items: center; gap: 8px; padding: 14px 18px; border-bottom: 1px solid #30363d; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .file { margin-left: 10px; font: 15px "SF Mono", Menlo, monospace; color: #9da7b3; }
+  pre {
+    font: 17.5px/1.7 "SF Mono", Menlo, monospace;
+    padding: 20px 22px 8px; color: #e6edf3; white-space: pre;
+  }
+  .kw { color: #ff7b72; }
+  .st { color: #a5d6ff; }
+  .cm { color: #8b949e; }
+  .result {
+    display: flex; align-items: center; gap: 10px;
+    margin: 6px 22px 20px; padding: 12px 14px;
+    border-radius: 10px; background: rgba(46,160,67,0.15); border: 1px solid rgba(63,185,80,0.4);
+    font: 600 17px "SF Mono", Menlo, monospace; color: #3fb950;
+  }
+</style>
+</head>
+<body>
+  <div class="left">
+    <div class="brand">
+      <svg width="84" height="84" viewBox="8 12 96 96" aria-hidden="true">
+        <rect x="8" y="12" width="96" height="96" rx="22" fill="#1f6feb"/>
+        <path d="M34 62 l14 14 l28 -32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M74 74 l14 14 M88 74 l-14 14" stroke="#7ee787" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <div class="name">Assert<span>X</span></div>
+    </div>
+    <div class="tagline">End-to-end API tests for Java services, in plain English.</div>
+    <div class="sub">Boots your Spring Boot or Dropwizard app and its real dependencies in Docker, from one YAML file.</div>
+    <div class="chips">
+      <div class="chip">Cucumber</div>
+      <div class="chip">RestAssured</div>
+      <div class="chip">Kafka</div>
+      <div class="chip">Redis</div>
+      <div class="chip">PostgreSQL</div>
+      <div class="chip">LocalStack</div>
+      <div class="chip">Toxiproxy</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="bar">
+      <div class="dot" style="background:#ff5f56"></div>
+      <div class="dot" style="background:#ffbd2e"></div>
+      <div class="dot" style="background:#27c93f"></div>
+      <div class="file">greeting.feature</div>
+    </div>
+<pre><span class="kw">Scenario:</span> Greet a known user
+  <span class="kw">Given</span> I have <span class="st">/api/v1/greetings/42</span> API
+  <span class="kw">When</span> Execute <span class="st">GET</span> request using REST
+  <span class="kw">Then</span> Validate status code is: <span class="st">200</span>
+  <span class="kw">And</span> the response field <span class="st">"message"</span>
+      is <span class="st">"Hello, Ada!"</span>
+</pre>
+    <div class="result">✓ 3 scenarios passed</div>
+  </div>
+</body>
+</html>
