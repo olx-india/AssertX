@@ -1,0 +1,8 @@
+# Loaded when AssertX boots the app with the `integration-test` profile.
+# ${user-service} is replaced at runtime with the port of the AssertX mock.
+server:
+  port: 9000
+
+clients:
+  user-service:
+    endpoint: http://0.0.0.0:${user-service}

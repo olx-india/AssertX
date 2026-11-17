@@ -31,6 +31,8 @@ jobs:
                 "username": "${{ secrets.USERNAME }}",
                 "password": "${{ secrets.PASSWORD }}"
             }]
+      - name: Set version from release tag
+        run: mvn --batch-mode versions:set -DnewVersion="${GITHUB_REF_NAME#v}" -DgenerateBackupPoms=false
       - name: Publish to the Maven Central Repository
         run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.GPG_PASSPHRASE }} clean deploy
         env:

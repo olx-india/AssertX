@@ -1,0 +1,35 @@
+name: Bug report
+description: Something in AssertX doesn't work as documented
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: textarea
+    id: config
+    attributes:
+      label: api-testing.yml and feature file
+      description: The smallest config and scenario that reproduce the problem.
+      render: yaml
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / stack trace
+      description: Include output from `it/logs/` if containers failed to start.
+      render: shell
+  - type: input
+    id: version
+    attributes:
+      label: AssertX version
+      placeholder: "0.0.3"
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: "Java 17, Spring Boot 3.3, macOS, Docker 27"
