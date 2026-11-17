@@ -3,6 +3,7 @@ name: Publish package to Docker Hub
 on:
   release:
     types: [created]
+  workflow_dispatch:   # rebuild the image from a branch without cutting a release
 
 jobs:
   publish:

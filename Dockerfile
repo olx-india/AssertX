@@ -10,18 +10,12 @@ RUN apk add --no-cache \
         ca-certificates \
         wget \
         python3 \
-        py3-pip
-
-RUN wget https://www.johnvansickle.com/ffmpeg/old-releases/ffmpeg-6.0.1-amd64-static.tar.xz \
-    && tar -xf ffmpeg-6.0.1-amd64-static.tar.xz \
-    && mv ffmpeg-6.0.1-amd64-static/ffmpeg /usr/local/bin/ \
-    && mv ffmpeg-6.0.1-amd64-static/ffprobe /usr/local/bin/ \
-    && chmod +x /usr/local/bin/ffmpeg /usr/local/bin/ffprobe \
-    && rm -rf ffmpeg-6.0.1-amd64-static*
+        py3-pip \
+        ffmpeg
 
 RUN pip3 install --upgrade --no-cache-dir pip --break-system-packages \
  && pip3 install --no-cache-dir awscli --break-system-packages \
- && rm -rf /var/cache/apk/* \
+ && rm -rf /var/cache/apk/*
 
 # Configure JDK17
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk
