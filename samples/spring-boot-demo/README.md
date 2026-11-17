@@ -21,7 +21,7 @@ What happens:
 
 1. AssertX reads `src/test/resources/api-testing.yml` and generates a docker-compose file under `it/`.
 2. It starts an Express container serving the `user-service` mock (`mocks/external-services/user-service/user.js`).
-3. It boots `GreetingApplication` with the `integration-test` profile; `${user-service}` in
+3. It boots `GreetingApplication` with the `integration-test` profile; `${user}` (the route `type`) in
    `application-integration-test.yml` is replaced with the mock's port.
 4. Cucumber runs `src/test/resources/features/greeting.feature`.
 5. An HTML report is written to `target/cucumber-html-reports/`.

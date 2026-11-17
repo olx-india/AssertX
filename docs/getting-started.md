@@ -251,7 +251,7 @@
           - com.olx.it.mocks.SolrMock
     ```
 
-6. Create `application-integration-test.yml` for defining application run configuration with port placeholders which will be filled automatically by AssertX on execution.
+6. Create `application-integration-test.yml` for defining application run configuration with port placeholders which will be filled automatically by AssertX on execution. Each placeholder is named after the route `type` in `api-testing.yml` (e.g. `${user}`), or the mock name for built-in mocks (e.g. `${redis}`, `${mysql}`).
  
     **Example** :
     
@@ -260,13 +260,13 @@
         clients:
           id: service-id
           order-service:
-            endpoint: http://0.0.0.0:${order-service}
+            endpoint: http://0.0.0.0:${order}
             timeouts:
               connection: 10000
               read: 10000
               write: 10000
           user-service:
-            endpoint: http://0.0.0.0:${user-service}
+            endpoint: http://0.0.0.0:${user}
             timeouts:
               connection: 10000
               read: 10000

@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions;
  */
 @CucumberOptions(
         features = {"src/test/resources/features"},
-        glue = {"com.olx.assertx.stepdefinitions", "com.example.greeting.it.steps"},
+        glue = {"com.example.greeting.it.steps"},   // built-in AssertX steps are inherited from ITRunner
         plugin = {"pretty", "json:target/cucumber-reports/cucumber.json"})
 public class ITMain extends ITRunner {
 }

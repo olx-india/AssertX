@@ -4,7 +4,8 @@ Feature: Greeting API
   Background:
     Given I have http://0.0.0.0:9000/ host
     And I have following headers
-      | Accept | application/json |
+      | Accept           |
+      | application/json |
 
   Scenario: Greet a known user
     Given I have /api/v1/greetings/42 API

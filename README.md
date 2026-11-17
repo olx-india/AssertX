@@ -100,7 +100,7 @@ Or open the repo in **GitHub Codespaces** — the dev container has Java, Maven 
 ```java
 @CucumberOptions(
     features = {"src/test/resources/features"},
-    glue = {"com.olx.assertx.stepdefinitions", "com.yourcompany.it.steps"})
+    glue = {"com.yourcompany.it.steps"})   // AssertX built-in steps are inherited from ITRunner
 public class ITMain extends ITRunner {
 }
 ```

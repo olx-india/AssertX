@@ -34,6 +34,13 @@
             <version>${assertx.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- ITRunner is a JUnit 4 runner; the vintage engine lets failsafe's JUnit Platform provider run it -->
+        <dependency>
+            <groupId>org.junit.vintage</groupId>
+            <artifactId>junit-vintage-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
