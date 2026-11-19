@@ -92,7 +92,7 @@ Or open the repo in **GitHub Codespaces** — the dev container has Java, Maven 
 <dependency>
     <groupId>in.olx</groupId>
     <artifactId>assertx</artifactId>
-    <version>0.0.3</version> <!-- see the Maven Central badge for the latest -->
+    <version>0.0.5</version> <!-- see the Maven Central badge for the latest -->
     <scope>test</scope>
 </dependency>
 ```
