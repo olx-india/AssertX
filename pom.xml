@@ -192,13 +192,16 @@
             <plugin>
                 <groupId>org.sonatype.central</groupId>
                 <artifactId>central-publishing-maven-plugin</artifactId>
-                <version>0.4.0</version>
+                <!-- 0.4.0 crashes parsing Central's newer validation response (Unrecognized field "warnings") -->
+                <version>0.12.0</version>
                 <extensions>true</extensions>
                 <configuration>
                     <publishingServerId>central</publishingServerId>
-                    <tokenAuth>true</tokenAuth>
                     <autoPublish>true</autoPublish>
-                    <waitUntil>published</waitUntil>
+                    <!-- Wait only until Central has validated the bundle (signatures, POM, javadoc/sources).
+                         The final publish to repo1 can take 30+ minutes and used to time the job out. -->
+                    <waitUntil>validated</waitUntil>
+                    <waitMaxTime>3600</waitMaxTime>
                 </configuration>
             </plugin>
             <!-- Plugin for Javadoc and Sources -->
