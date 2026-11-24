@@ -195,7 +195,7 @@
         redis:
             enabled: true                                                               // Specify whether redis is needed or not
             port: 6379                                                                  // Optional -> Default is 6379
-            image: redis:latest                                                         // Optional -> Default is redis:latest
+            image: redis:7.4                                                              // Optional -> Default is redis:7.4
             configFilePath: redis/redis.conf                                            // Relative Path from resources to file, Optional -> Default is null, needed if user wants to create his own redis server/cluster
         toxiproxy:
             enabled: true                                                               // Specify whether toxiproxy is needed or not
@@ -204,7 +204,7 @@
             enabled: true
             dataDir: src/test/resources/database/                                       // Optional -> Path to directory having warm up scripts, should be .sql files containing schema creation and sample data insertion queries
             port: 3306                                                                  // Optional -> Default is 3306
-            image: mysql:latest                                                         // Optional -> Default is mysql:latest
+            image: mysql:8.4                                                              // Optional -> Default is mysql:8.4
         localstack:
             enabled: true
             dataDir: src/test/resources/aws/                                            // Optional -> Path to directory having warm up scripts, should be .sh files containing resource creation scripts
@@ -212,11 +212,11 @@
               - s3
             region: us-east-1                                                           // Optional -> Default is us-east-1
             port: 4566                                                                  // Optional -> Default is 4566
-            image: localstack/localstack                                                // Optional -> Default is localstack/localstack
+            image: localstack/localstack:3.8                                            // Optional -> Default is localstack/localstack:3.8
         solr:
             enabled: true
             port: 8983                                                                  // Optional -> Default is 8983
-            image: solr:latest                                                          // Optional -> Default is solr:latest
+            image: solr:9.7                                                               // Optional -> Default is solr:9.7
             collectionsDir: src/test/resources/solr/collections                         // Path to directory containing the solr collection configurations
             collections:                         
               - name: olxin                                                             // Name of the collection
@@ -236,7 +236,7 @@
             enabled: true
             dataDir: src/test/resources/postgresql/                                     // Optional -> Path to directory having warm up scripts, should be .sql files containing schema creation and sample data insertion queries
             port: 5432                                                                  // Optional -> Default is 5432
-            image: postgres:latest                                                      // Optional -> Default is postgres:latest
+            image: postgres:16                                                            // Optional -> Default is postgres:16
         opensearch:
             enabled: true
             port: 9200                                                                  // Optional -> Default is 9200
