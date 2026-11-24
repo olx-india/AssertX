@@ -10,6 +10,7 @@ package, so any `ITMain` extending it can use them without any Java — do **not
 | `Given I have following query parameters` | Table with parameter names in the first row and values in the second |
 | `Given I have following headers` | Table with header names in the first row and values in the second |
 | `Given I have a request body in <contextKey>` | Uses a body you stored in the test context from a custom step |
+| `Given I have a request body from file "<path>"` | Loads the body from a file under `src/test/resources`, e.g. `requests/create-order.json`; fails clearly when the file is missing |
 | `Given I have following multipart file specifications` | Multipart upload definition |
 | `When Execute <GET\|POST\|PUT\|PATCH\|DELETE> request using REST` | Sends the request with RestAssured |
 | `Then Validate status code is: <code>` | Asserts the HTTP status |
