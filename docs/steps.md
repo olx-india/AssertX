@@ -11,7 +11,7 @@ package, so any `ITMain` extending it can use them without any Java — do **not
 | `Given I have following headers` | Table with header names in the first row and values in the second |
 | `Given I have a request body in <contextKey>` | Uses a body you stored in the test context from a custom step |
 | `Given I have following multipart file specifications` | Multipart upload definition |
-| `When Execute <GET\|POST\|PUT\|PATCH\|DELETE> request using REST` | Sends the request with RestAssured |
+| `When Execute <GET\|POST\|PUT\|PATCH\|DELETE\|HEAD\|OPTIONS> request using REST` | Sends the request with RestAssured |
 | `Then Validate status code is: <code>` | Asserts the HTTP status |
 
 ## Example
