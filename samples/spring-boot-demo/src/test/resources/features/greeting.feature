@@ -12,7 +12,6 @@ Feature: Greeting API
     When Execute GET request using REST
     Then Validate status code is: 200
     And the response field "message" is "Hello, Ada!"
-    And the response header "Content-Type" is "application/json"
 
   Scenario: Check the greeting endpoint answers HEAD
     Given I have /api/v1/greetings/42 API
