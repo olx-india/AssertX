@@ -21,6 +21,11 @@ Feature: Greeting API
     Then Validate status code is: 200
     And the response field "message" is "Hello, Ada!"
 
+  Scenario: Check the greeting endpoint answers HEAD
+    Given I have /api/v1/greetings/42 API
+    When Execute HEAD request using REST
+    Then Validate status code is: 200
+
   Scenario Outline: Greet users by id
     Given I have /api/v1/greetings/<userId> API
     When Execute GET request using REST

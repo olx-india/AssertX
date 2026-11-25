@@ -1,15 +1,29 @@
 package com.olx.assertx.service.model;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public enum MethodType {
 
     GET,
     PUT,
     POST,
     PATCH,
-    DELETE;
+    DELETE,
+    HEAD,
+    OPTIONS;
 
     public static MethodType fromString(String value) {
-        return valueOf(value.toUpperCase());
+        try {
+            return valueOf(value.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(
+                    "Unsupported method '" + value + "'. Supported methods: " + supportedMethods(), e);
+        }
+    }
+
+    private static String supportedMethods() {
+        return Arrays.stream(values()).map(MethodType::name).collect(Collectors.joining(", "));
     }
 
     @Override
