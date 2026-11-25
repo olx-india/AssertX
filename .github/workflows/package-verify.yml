@@ -21,4 +21,4 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Maven Clean Package
-        run: mvn -B clean package
+        run: mvn -B clean package -Dgpg.skip
