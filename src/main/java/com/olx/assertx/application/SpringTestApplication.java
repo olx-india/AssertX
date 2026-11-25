@@ -44,6 +44,9 @@ public class SpringTestApplication implements TestApplication {
 
     @Override
     public void stop() {
+        if (springApplicationContext == null) {
+            return; // the app never started (e.g. mocks failed to come up); nothing to exit
+        }
         LOGGER.info("Exiting application of type={}", getApplicationFramework());
         SpringApplication.exit(springApplicationContext);
     }

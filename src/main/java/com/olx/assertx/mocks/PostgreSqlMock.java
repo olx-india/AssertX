@@ -54,10 +54,12 @@ public class PostgreSqlMock implements BaseMock {
                 .environment(Arrays.asList(
                         String.format(ENV_FORMAT, "POSTGRES_DB", DEFAULT_DB_NAME),
                         String.format(ENV_FORMAT, "POSTGRES_USER", DEFAULT_DB_USER),
-                        String.format(ENV_FORMAT, "POSTGRES_PASSWORD", DEFAULT_DB_PASS)
+                        String.format(ENV_FORMAT, "POSTGRES_PASSWORD", DEFAULT_DB_PASS),
+                        // Listen on the configured port inside the container too (postgres and pg_isready
+                        // both read PGPORT), so Toxiproxy's upstream (postgresql:port) reaches it.
+                        String.format(ENV_FORMAT, "PGPORT", port)
                 ))
-                .ports(Collections.singletonList(String.format(PORT_MAPPING_FORMAT, port,
-                        frameworkConfiguration.getServiceDefaults().getPostgresql().getPort())))
+                .ports(Collections.singletonList(String.format(PORT_MAPPING_FORMAT, port, port)))
                 .networks(Networks.builder()
                         .service1NetName(Service1Net.builder().build())
                         .build())

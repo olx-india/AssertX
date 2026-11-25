@@ -17,6 +17,13 @@ import java.lang.reflect.InvocationTargetException;
 public class DockerComposeBuilder {
     private static final Logger LOGGER = LoggerFactory.getLogger(DockerComposeBuilder.class);
     public static final String DOCKER_COMPOSE_FILENAME = "docker-compose.json";
+    /**
+     * Every container AssertX starts is named {@code assertx-<mock>}. Containers are created with
+     * removeConflictingContainersOnStartup, so plain names like {@code redis} or {@code mysql} would make
+     * AssertX delete unrelated containers that happen to share them. Compose service names (and so the DNS
+     * names mocks use to reach each other, e.g. {@code kafka}, {@code zookeeper}) are unchanged.
+     */
+    public static final String CONTAINER_NAME_PREFIX = "assertx-";
 
     public static void build(UserMocksConfiguration userMocksConfiguration,
                              FrameworkConfiguration frameworkConfiguration) throws IOException {
@@ -48,6 +55,8 @@ public class DockerComposeBuilder {
         BaseMock mock = MockFactory.getMock(MockType.TOXIPROXY);
         mock.build(frameworkConfiguration, userMocksConfiguration, services);
 
+        prefixContainerNames(services);
+
         // Build docker compose
         DockerCompose dockerCompose = DockerCompose.builder()
                 .services(services)
@@ -59,6 +68,14 @@ public class DockerComposeBuilder {
 
         LOGGER.info("Write {} file to path={}", DOCKER_COMPOSE_FILENAME, Paths.MOCKS_FOLDER);
         FileUtility.writeFile(Paths.MOCKS_FOLDER, DOCKER_COMPOSE_FILENAME, dockerCompose);
+    }
+
+    private static void prefixContainerNames(Services services) {
+        services.getDynamicAttributes().forEach((serviceName, service) -> {
+            if (service instanceof BaseService baseService) {
+                baseService.setContainerName(CONTAINER_NAME_PREFIX + serviceName);
+            }
+        });
     }
 
 }

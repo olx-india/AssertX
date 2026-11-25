@@ -133,8 +133,15 @@ public class ITRunner {
 
     @AfterClass
     public static void teardown() {
-        LOGGER.info("Remove spun docker containers");
-        containerRule.after();
+        // setup() may have failed before the containers or the app were started; don't let a
+        // NullPointerException here hide the original failure.
+        if (containerRule != null) {
+            LOGGER.info("Remove spun docker containers");
+            containerRule.after();
+        }
+        if (frameworkConfiguration == null || userTestConfiguration == null) {
+            return;
+        }
 
         LOGGER.info("Exiting application");
         for (ApplicationFramework framework : frameworkConfiguration.getAvailableFrameworks()) {

@@ -35,7 +35,9 @@ Then, the health check using `curl` can be done as follows :
    ```
    In the above config, the port for user service is `31270`.
 
-2. If toxiproxy is disabled, you can run `docker ps` for getting the container ports.
+2. If toxiproxy is disabled, you can run `docker ps` for getting the container ports. AssertX names its
+   containers `assertx-<mock>` (for example `assertx-redis`, `assertx-mysql`), so they never clash with
+   containers you run yourself; a leftover `assertx-*` container from an interrupted run is replaced.
    
    a.) All global or user specified mocks will have the port same as the external service container port
    

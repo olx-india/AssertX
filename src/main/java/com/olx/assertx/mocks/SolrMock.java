@@ -49,7 +49,8 @@ public class SolrMock implements BaseMock {
                 .volumes(volumes)
                 .entrypoint(Arrays.asList("sh", "-c", "docker-entrypoint.sh " + getEntrypointCommand(userMocksConfiguration.getSolr().getCollections()) + "solr-foreground"))
                 .healthcheck(Healthcheck.builder()
-                        .test(List.of("CMD-SHELL", "curl -sf http://localhost:" + port + "/solr/" + getPrimaryCollection(userMocksConfiguration.getSolr().getCollections()) + "/admin/ping?wt=json | python -c \"import sys, json; print json.load(sys.stdin)['status']\" | grep -iq \"ok\" || exit 1"))
+                        // Official solr images ship curl and grep but no Python
+                        .test(List.of("CMD-SHELL", "curl -sf http://localhost:" + port + "/solr/" + getPrimaryCollection(userMocksConfiguration.getSolr().getCollections()) + "/admin/ping?wt=json | grep -Eq '\"status\" *: *\"OK\"' || exit 1"))
                         .interval("10s")
                         .retries(3)
                         .timeout("50s")

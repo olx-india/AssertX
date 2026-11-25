@@ -41,10 +41,12 @@ public class RedisMock implements BaseMock {
         LOGGER.info("Map {} mock on port={}", getMockType(), port);
 
         List<String> volumes = new ArrayList<>();
-        List<String> command = new ArrayList<>();
+        // Listen on the configured port inside the container too, so the host mapping (port:port) and
+        // Toxiproxy's upstream (redis:port) both reach it when the default port is overridden.
+        List<String> command = new ArrayList<>(List.of(REDIS_SERVER_COMMAND));
 
         if (StringUtils.isNotBlank(userMocksConfiguration.getRedis().getConfigFilePath())) {
-            // mount redis conf file
+            // mount redis conf file and start redis-server with it
             volumes.add(
                     String.format(
                             VOLUME_DATA_PATH_FORMAT,
@@ -53,15 +55,9 @@ public class RedisMock implements BaseMock {
                             REDIS_CONF
                     )
             );
-
-            // Add command to run redis-server using conf file
-            command.addAll(
-                    Arrays.asList(
-                            REDIS_SERVER_COMMAND,
-                            REDIS_CONF_PATH
-                    )
-            );
+            command.add(REDIS_CONF_PATH);
         }
+        command.addAll(Arrays.asList("--port", String.valueOf(port)));
 
         return Redis.builder()
                 .image(getDockerImage(frameworkConfiguration, userMocksConfiguration))
@@ -77,7 +73,7 @@ public class RedisMock implements BaseMock {
                         .service1NetName(Service1Net.builder().build())
                         .build())
                 .healthcheck(Healthcheck.builder()
-                        .test(List.of("CMD", "redis-cli", "ping"))
+                        .test(List.of("CMD", "redis-cli", "-p", String.valueOf(port), "ping"))
                         .interval("2s")
                         .retries(3)
                         .timeout("5s")
