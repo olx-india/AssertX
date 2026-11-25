@@ -14,6 +14,7 @@ package, so any `ITMain` extending it can use them without any Java — do **not
 | `Given I have following multipart file specifications` | Multipart upload definition |
 | `When Execute <GET\|POST\|PUT\|PATCH\|DELETE> request using REST` | Sends the request with RestAssured |
 | `Then Validate status code is: <code>` | Asserts the HTTP status |
+| `Then the response header "<name>" is "<value>"` | Asserts a response header value, e.g. `Content-Type`; fails clearly when the header is missing |
 
 ## Example
 
