@@ -1,0 +1,16 @@
+server:
+  port: 8080
+
+deps:
+  host: localhost
+  redis: 6379
+  mysql: 3306
+  mysql-db: assertx
+  postgresql: 5432
+  kafka: 9093
+  localstack: 4566
+  solr: 8983
+  opensearch: 9200
+  user: 8081
+  payment: 8082
+  echo: 8083

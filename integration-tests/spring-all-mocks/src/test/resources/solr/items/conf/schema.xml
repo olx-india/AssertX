@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema name="items" version="1.6">
+  <fieldType name="string" class="solr.StrField" sortMissingLast="true" docValues="true"/>
+  <fieldType name="plong" class="solr.LongPointField" docValues="true"/>
+  <field name="id" type="string" indexed="true" stored="true" required="true"/>
+  <field name="title" type="string" indexed="true" stored="true"/>
+  <field name="_version_" type="plong" indexed="false" stored="false"/>
+  <uniqueKey>id</uniqueKey>
+</schema>

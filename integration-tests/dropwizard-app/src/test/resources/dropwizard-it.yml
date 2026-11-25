@@ -1,0 +1,15 @@
+# ${user} and ${redis} are system properties set by AssertX to the mock ports.
+userServiceUrl: http://0.0.0.0:${user}
+redisHost: 0.0.0.0
+redisPort: ${redis}
+
+server:
+  applicationConnectors:
+    - type: http
+      port: 9100
+  adminConnectors:
+    - type: http
+      port: 9101
+
+logging:
+  level: INFO

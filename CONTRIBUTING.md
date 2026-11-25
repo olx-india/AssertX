@@ -22,6 +22,24 @@ cd samples/spring-boot-demo
 mvn clean verify -Dassertx.version=<version from the root pom.xml>
 ```
 
+### Regression integration tests
+
+`pipeline-scripts/regression-it.sh` builds AssertX from your working tree, installs it into `~/.m2`, then
+runs the end-to-end suite of every project under `samples/` and `integration-tests/` against that build.
+`integration-tests/spring-all-mocks` enables every built-in mock at once behind Toxiproxy and exercises
+every built-in step; `integration-tests/dropwizard-app` covers Dropwizard, Toxiproxy off and port/image
+overrides. CI runs the same script on every pull request
+([`regression-it.yml`](.github/workflows/regression-it.yml)).
+
+```bash
+pipeline-scripts/regression-it.sh                                    # everything
+pipeline-scripts/regression-it.sh integration-tests/spring-all-mocks # one project
+```
+
+If you change a mock, a step or the runner, add or extend a scenario there — see
+[`integration-tests/README.md`](integration-tests/README.md). The script installs the root pom's version
+locally, replacing any Maven Central copy of it.
+
 Or open the repository in GitHub Codespaces / VS Code Dev Containers; `.devcontainer/` has everything.
 
 Docs preview:

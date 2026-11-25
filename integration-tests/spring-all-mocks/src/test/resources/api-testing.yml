@@ -1,0 +1,66 @@
+# Regression suite: every built-in AssertX mock enabled at once, behind Toxiproxy, plus a custom mock.
+mainClass: com.olx.assertx.it.probe.ProbeApplication
+application:
+  spring:
+    profile: integration-test
+mocks:
+  externalServices:
+    dependencies:                      # extra npm packages for the JS mocks (user.js requires uuid)
+      - name: uuid
+        version: "8.3.2"
+    userSpecified:
+      routes:
+        - type: user                   # JSON mock, two endpoints
+          resourcePath: src/test/resources/mocks/external-services/
+          folderName: user-service
+          endpoints:
+            - methodType: GET
+              path: /api/v1/users/:userId
+              method: getUser
+            - methodType: POST
+              path: /api/v1/users
+              method: createUser
+        - type: payment                # SOAP / XML mock
+          resourcePath: src/test/resources/mocks/external-services/
+          folderName: payment-service
+          endpoints:
+            - methodType: POST
+              path: /payment/payment.asmx
+              method: paymentOutput
+  redis:
+    enabled: true
+    configFilePath: redis/redis.conf   # classpath resource, mounted as /redis.conf
+  mysql:
+    enabled: true
+    port: 33306                        # overrides the default 3306 (often taken by a local MySQL)
+    db: assertx
+    dataDir: src/test/resources/mysql/
+  postgresql:
+    enabled: true
+    port: 35432                        # overrides the default 5432; exercises the custom port through Toxiproxy
+    dataDir: src/test/resources/postgresql/
+  zookeeper:
+    enabled: true
+  kafka:
+    enabled: true
+    topics:
+      - orderCreated
+      - orderCancelled
+  localstack:
+    enabled: true
+    services:
+      - s3
+    dataDir: src/test/resources/localstack/
+  solr:
+    enabled: true
+    collectionsDir: src/test/resources/solr/
+    collections:
+      - name: items
+        configPath: items
+        primary: true
+  opensearch:
+    enabled: true
+  toxiproxy:
+    enabled: true
+  custom:
+    - com.olx.assertx.it.probe.mocks.EchoServerMock

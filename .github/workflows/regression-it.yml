@@ -1,0 +1,56 @@
+name: Regression Integration Tests
+# Builds AssertX from this commit and runs each end-to-end suite against it (real Docker mocks,
+# real app boot), so library changes that break real usage fail the PR. See integration-tests/README.md.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: regression-it-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  regression:
+    name: ${{ matrix.project }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - samples/spring-boot-demo
+          - integration-tests/spring-all-mocks
+          - integration-tests/dropwizard-app
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Run regression suite
+        run: pipeline-scripts/regression-it.sh ${{ matrix.project }}
+      - name: Name the report artifact
+        if: always()
+        id: artifact
+        run: echo "name=regression-$(echo '${{ matrix.project }}' | tr '/' '-')" >> "$GITHUB_OUTPUT"
+      - name: Upload Cucumber reports and mock logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact.outputs.name }}
+          path: |
+            ${{ matrix.project }}/target/cucumber-reports/
+            ${{ matrix.project }}/target/cucumber-html-reports/
+            ${{ matrix.project }}/target/failsafe-reports/
+            ${{ matrix.project }}/it/logs/
+          if-no-files-found: ignore

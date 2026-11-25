@@ -1,0 +1,23 @@
+# Regression suite: Dropwizard boot, Toxiproxy disabled (direct container ports), port and image overrides.
+mainClass: com.olx.assertx.it.dropwizard.GreetingDropwizardApplication
+application:
+  dropwizard:
+    configPath: src/test/resources/dropwizard-it.yml
+mocks:
+  externalServices:
+    port: 31370                        # overrides the default 31270
+    userSpecified:
+      routes:
+        - type: user
+          resourcePath: src/test/resources/mocks/external-services/
+          folderName: user-service
+          endpoints:
+            - methodType: GET
+              path: /api/v1/users/:userId
+              method: getUser
+  redis:
+    enabled: true
+    port: 6390                         # overrides the default 6379
+    image: redis:7.2                   # overrides the default image
+  toxiproxy:
+    enabled: false

@@ -1,0 +1,19 @@
+# Active when AssertX boots the probe. Each ${name} is a system property AssertX sets to the port of the
+# mock called `name` (route `type` for HTTP mocks, getServiceName() for custom mocks). Toxiproxy is
+# enabled in api-testing.yml, so these are the proxy ports in front of each container.
+server:
+  port: 9000
+
+deps:
+  host: ${docker-host}
+  redis: ${redis}
+  mysql: ${mysql}
+  mysql-db: assertx
+  postgresql: ${postgresql}
+  kafka: ${kafka}
+  localstack: ${localstack}
+  solr: ${solr}
+  opensearch: ${opensearch}
+  user: ${user}
+  payment: ${payment}
+  echo: ${echo}
