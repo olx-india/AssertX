@@ -1,5 +1,11 @@
 # Mocks
 
+The default Docker image of every built-in mock is pinned in
+`src/main/resources/config.yml` (for example `redis:7.4`, `mysql:8.4`).
+Override any of them from your project's `api-testing.yml` by setting
+the service's `image` key, as shown in
+[Getting Started](getting-started.md).
+
 AssertX starts every dependency declared in `api-testing.yml` as a Docker container before your app boots. See the [configuration reference](getting-started.md#configuration) for all options.
 
 ## Health Check
@@ -88,7 +94,7 @@ Then, the health check using `curl` can be done as follows :
      @Override
      public BaseService map(int port) {                                             // Return the object of your custom mock defined above 
        return Solr.builder()
-         .image("solr:latest")
+         .image("solr:9.7")
          .containerName(getServiceName())
          .ports(Collections.singletonList(port + ":" + port))
          .environment(List.of())
