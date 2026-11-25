@@ -16,6 +16,9 @@ Feature: Greeting API
 
   Scenario: Greet with a posted name
     Given I have /api/v1/greetings/echo API
+    And I have following headers
+      | Content-Type     |
+      | application/json |
     And I have a request body from file "requests/greeting.json"
     When Execute POST request using REST
     Then Validate status code is: 200
